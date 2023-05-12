@@ -1,0 +1,31 @@
+{
+    "name": "TimeTrack",
+    "version": "0.0.0.1",
+    "description": "Record the amount of time you spend on a website.",
+    "manifest_version": 3,
+  
+    "icons": {
+      "16": "./images/icons8-clock-16.png",
+      "32": "./images/icons8-clock-32.png",
+      "48": "./images/icons8-clock-48.png",
+      "128": "./images/icons8-clock-128.png"
+    },
+  
+    "permissions": ["activeTab", "storage", "scripting", "alarms", "tabs"],
+  
+    "content_scripts": [
+      {
+        "js": ["./scripts/content_script.js"],
+        "matches": ["*://*/*"],
+        "run_at": "document_idle"
+      }
+    ],
+  
+    "background": {
+      "service_worker": "./service/background.js"
+    },
+  
+    "action": {
+      "default_popup": "html/popup.html"
+    }
+}
